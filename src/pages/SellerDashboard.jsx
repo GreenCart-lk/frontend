@@ -3,11 +3,26 @@ import "../styles/sellerDashboard.css";
 
 const SellerDashboard = () => {
   const [products, setProducts] = useState([
-    { id: 1, name: "Reusable Water Bottle", price: 1500, image: "/images/bottle.jpg" },
-    { id: 2, name: "Organic Cotton Tote Bag", price: 1200, image: "/images/tote-bag.jpg" },
+    {
+      id: 1,
+      name: "Reusable Water Bottle",
+      price: 1500,
+      image: "/images/bottle.jpg",
+    },
+    {
+      id: 2,
+      name: "Organic Cotton Tote Bag",
+      price: 1200,
+      image: "/images/tote-bag.jpg",
+    },
   ]);
 
-  const [formData, setFormData] = useState({ name: "", price: "", image: null, preview: "" });
+  const [formData, setFormData] = useState({
+    name: "",
+    price: "",
+    image: null,
+    preview: "",
+  });
 
   // Handle input changes
   const handleChange = (e) => {
@@ -50,28 +65,69 @@ const SellerDashboard = () => {
     <div className="seller-dashboard">
       <h2>Seller Dashboard</h2>
       <form onSubmit={addProduct} className="add-product-form">
-        <input type="text" name="name" placeholder="Product Name" value={formData.name} onChange={handleChange} required />
-        <input type="number" name="price" placeholder="Price (LKR)" value={formData.price} onChange={handleChange} required />
-        <input id="file-input" type="file" accept="image/*" onChange={handleImageUpload} required />
-        
+        <input
+          type="text"
+          name="name"
+          placeholder="Product Name"
+          value={formData.name}
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="number"
+          name="price"
+          placeholder="Price (LKR)"
+          value={formData.price}
+          onChange={handleChange}
+          required
+        />
+        <input
+          id="file-input"
+          type="file"
+          accept="image/*"
+          onChange={handleImageUpload}
+          required
+        />
+
         {formData.preview && (
           <div className="image-preview-container">
-            <img src={formData.preview} alt="Product Preview" className="full-preview-image" />
-            <button type="button" className="cancel-image-btn" onClick={cancelImage}>Cancel Image</button>
+            <img
+              src={formData.preview}
+              alt="Product Preview"
+              className="full-preview-image"
+            />
+            <button
+              type="button"
+              className="cancel-image-btn"
+              onClick={cancelImage}
+            >
+              Cancel Image
+            </button>
           </div>
         )}
 
-        <button type="submit" className="add-btn">Add Product</button>
+        <button type="submit" className="add-btn">
+          Add Product
+        </button>
       </form>
 
       <h3>My Products</h3>
       <div className="product-list">
         {products.map((product) => (
           <div key={product.id} className="product-card">
-            <img src={product.preview || "/images/placeholder.png"} alt={product.name} className="product-image" />
+            <img
+              src={product.preview || "/images/placeholder.png"}
+              alt={product.name}
+              className="product-image"
+            />
             <h4>{product.name}</h4>
             <p>{product.price} LKR</p>
-            <button onClick={() => deleteProduct(product.id)} className="delete-btn">Delete</button>
+            <button
+              onClick={() => deleteProduct(product.id)}
+              className="delete-btn"
+            >
+              Delete
+            </button>
           </div>
         ))}
       </div>

@@ -9,7 +9,12 @@ const AdminPanel = () => {
 
   const [products, setProducts] = useState([
     { id: 1, name: "Reusable Water Bottle", price: 1500, seller: "John Doe" },
-    { id: 2, name: "Organic Cotton Tote Bag", price: 1200, seller: "Jane Smith" },
+    {
+      id: 2,
+      name: "Organic Cotton Tote Bag",
+      price: 1200,
+      seller: "Jane Smith",
+    },
   ]);
 
   // Delete user
@@ -25,7 +30,7 @@ const AdminPanel = () => {
   return (
     <div className="admin-panel">
       <h2>Admin Panel</h2>
-      
+
       <div className="section">
         <h3>Manage Users</h3>
         <table>
@@ -46,7 +51,12 @@ const AdminPanel = () => {
                 <td>{user.email}</td>
                 <td>{user.role}</td>
                 <td>
-                  <button onClick={() => deleteUser(user.id)} className="delete-btn">Delete</button>
+                  <button
+                    onClick={() => deleteUser(user.id)}
+                    className="delete-btn"
+                  >
+                    Delete
+                  </button>
                 </td>
               </tr>
             ))}
@@ -74,7 +84,12 @@ const AdminPanel = () => {
                 <td>{product.price}</td>
                 <td>{product.seller}</td>
                 <td>
-                  <button onClick={() => deleteProduct(product.id)} className="delete-btn">Delete</button>
+                  <button
+                    onClick={() => deleteProduct(product.id)}
+                    className="delete-btn"
+                  >
+                    Delete
+                  </button>
                 </td>
               </tr>
             ))}
