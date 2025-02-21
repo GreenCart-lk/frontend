@@ -61,7 +61,7 @@ const ProductDetails = () => {
 
   return (
     <div className="product-details-container">
-      <img src={product.image} alt={product.name} className="product-image" />
+      <img src={product.image} alt={product.name} className="product-images" />
       <div className="product-info">
         <h2>{product.name}</h2>
         <p className="price">{product.price} LKR</p>

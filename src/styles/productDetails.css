@@ -9,7 +9,7 @@
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-.product-image {
+.product-images {
   width: 300px;
   height: 300px;
   object-fit: cover;
