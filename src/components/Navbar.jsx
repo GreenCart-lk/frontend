@@ -14,7 +14,11 @@ const Navbar = ({ cartItems }) => {
     <nav className="navbar">
       <div className="nav-container">
         <Link to="/" className="logo">
-          GreenCart LK
+          <img
+            src="/images/logo.png"
+            alt="GreenCart LK Logo"
+            className="nav-logo"
+          />
         </Link>
 
         {/* Hamburger Menu Icon */}

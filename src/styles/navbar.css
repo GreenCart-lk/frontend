@@ -18,11 +18,10 @@
 }
 
 /* Logo */
-.logo {
-  font-size: 1.5em;
-  font-weight: bold;
-  text-decoration: none;
-  color: white;
+.nav-logo {
+  height: 50px;
+  width: auto;
+  display: block;
 }
 
 /* Navigation Links */
@@ -64,6 +63,10 @@
 
 /* Mobile Styles */
 @media (max-width: 768px) {
+  .nav-logo {
+    height: 40px;
+  }
+
   .menu-icon {
     display: block;
   }
