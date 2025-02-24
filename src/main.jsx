@@ -11,6 +11,8 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import SellerDashboard from "./pages/SellerDashboard";
 import AdminPanel from "./pages/AdminPanel";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
 import "./styles/global.css"; // Importing global CSS
 
 ReactDOM.createRoot(document.getElementById("root")).render(
@@ -27,6 +29,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(
           <Route path="signup" element={<Signup />} />
           <Route path="seller" element={<SellerDashboard />} />
           <Route path="admin" element={<AdminPanel />} />
+          <Route path="about" element={<About />} />
+          <Route path="contact" element={<Contact />} />
         </Route>
       </Routes>
     </Router>

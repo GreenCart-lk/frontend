@@ -7,8 +7,7 @@ const Footer = () => {
         &copy; {new Date().getFullYear()} GreenCart LK. All rights reserved.
       </p>
       <p>
-        <a href="/about">About Us</a> | <a href="/contact">Contact</a> |{" "}
-        <a href="/privacy">Privacy Policy</a>
+        <a href="/about">About Us</a> | <a href="/contact">Contact</a>
       </p>
     </footer>
   );
