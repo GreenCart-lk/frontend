@@ -13,7 +13,10 @@ const Checkout = () => {
   const [orderConfirmed, setOrderConfirmed] = useState(false);
 
   // Calculate total price
-  const totalPrice = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
+  const totalPrice = cartItems.reduce(
+    (acc, item) => acc + item.price * item.quantity,
+    0
+  );
 
   // Handle form input changes
   const handleChange = (e) => {
@@ -43,26 +46,48 @@ const Checkout = () => {
         <form onSubmit={handleConfirmOrder} className="checkout-form">
           <div className="form-group">
             <label>Name:</label>
-            <input type="text" name="name" value={formData.name} onChange={handleChange} required />
+            <input
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              required
+            />
           </div>
           <div className="form-group">
             <label>Email:</label>
-            <input type="email" name="email" value={formData.email} onChange={handleChange} required />
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+            />
           </div>
           <div className="form-group">
             <label>Address:</label>
-            <textarea name="address" value={formData.address} onChange={handleChange} required />
+            <textarea
+              name="address"
+              value={formData.address}
+              onChange={handleChange}
+              required
+            />
           </div>
           <div className="form-group">
             <label>Payment Method:</label>
-            <select name="paymentMethod" value={formData.paymentMethod} onChange={handleChange}>
+            <select
+              name="paymentMethod"
+              value={formData.paymentMethod}
+              onChange={handleChange}
+            >
               <option value="credit-card">Credit Card</option>
-              <option value="paypal">PayPal</option>
               <option value="cash-on-delivery">Cash on Delivery</option>
             </select>
           </div>
           <h3>Total: {totalPrice} LKR</h3>
-          <button type="submit" className="confirm-order-btn">Confirm Order</button>
+          <button type="submit" className="confirm-order-btn">
+            Confirm Order
+          </button>
         </form>
       )}
     </div>

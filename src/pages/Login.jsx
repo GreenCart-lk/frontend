@@ -13,7 +13,10 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (formData.email === "test@example.com" && formData.password === "password123") {
+    if (
+      formData.email === "test@example.com" &&
+      formData.password === "password123"
+    ) {
       navigate("/");
     } else {
       setError("Invalid email or password.");
@@ -27,13 +30,27 @@ const Login = () => {
       <form onSubmit={handleSubmit} className="auth-form">
         <div className="form-group">
           <label>Email:</label>
-          <input type="email" name="email" value={formData.email} onChange={handleChange} required />
+          <input
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            required
+          />
         </div>
         <div className="form-group">
           <label>Password:</label>
-          <input type="password" name="password" value={formData.password} onChange={handleChange} required />
+          <input
+            type="password"
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+            required
+          />
         </div>
-        <button type="submit" className="auth-btn">Login</button>
+        <button type="submit" className="auth-btn">
+          Login
+        </button>
       </form>
       <p>
         Don't have an account? <Link to="/signup">Sign up</Link>

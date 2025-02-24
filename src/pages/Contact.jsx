@@ -1,15 +1,12 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import "../styles/auth.css";
+import "../styles/contact.css";
 
-const Signup = () => {
+const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    password: "",
+    message: "",
   });
-  const [error, setError] = useState("");
-  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -17,18 +14,16 @@ const Signup = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (formData.name && formData.email && formData.password) {
-      navigate("/login");
-    } else {
-      setError("All fields are required.");
-    }
+    alert("Your message has been sent successfully!");
+    setFormData({ name: "", email: "", message: "" });
   };
 
   return (
-    <div className="auth-container">
-      <h2>Sign Up</h2>
-      {error && <p className="error-message">{error}</p>}
-      <form onSubmit={handleSubmit} className="auth-form">
+    <div className="contact-container">
+      <h2>Contact Us</h2>
+      <p>Have questions? Get in touch with us.</p>
+
+      <form onSubmit={handleSubmit} className="contact-form">
         <div className="form-group">
           <label>Name:</label>
           <input
@@ -50,24 +45,20 @@ const Signup = () => {
           />
         </div>
         <div className="form-group">
-          <label>Password:</label>
-          <input
-            type="password"
-            name="password"
-            value={formData.password}
+          <label>Message:</label>
+          <textarea
+            name="message"
+            value={formData.message}
             onChange={handleChange}
             required
           />
         </div>
-        <button type="submit" className="auth-btn">
-          Sign Up
+        <button type="submit" className="contact-btn">
+          Send Message
         </button>
       </form>
-      <p>
-        Already have an account? <Link to="/login">Login</Link>
-      </p>
     </div>
   );
 };
 
-export default Signup;
+export default Contact;
