@@ -15,10 +15,13 @@
   margin-bottom: 20px;
 }
 
-.add-product-form input {
+.add-product-form input,
+.add-product-form textarea {
   padding: 8px;
   border: 1px solid #ddd;
   border-radius: 5px;
+  font-family: inherit;
+  font-size: 14px;
 }
 
 .image-preview-container {
@@ -85,6 +88,12 @@
   width: 100%;
   height: auto;
   border-radius: 5px;
+}
+
+.product-description {
+  font-size: 13px;
+  color: #555;
+  margin-top: 5px;
 }
 
 .delete-btn {

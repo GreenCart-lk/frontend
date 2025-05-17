@@ -7,29 +7,24 @@ const SellerDashboard = () => {
       id: 1,
       name: "Reusable Water Bottle",
       price: 1500,
+      description: "A stainless steel water bottle to reduce plastic waste.",
       image: "/images/bottle.jpg",
-    },
-    {
-      id: 2,
-      name: "Organic Cotton Tote Bag",
-      price: 1200,
-      image: "/images/tote-bag.jpg",
+      preview: "/images/bottle.jpg",
     },
   ]);
 
   const [formData, setFormData] = useState({
     name: "",
     price: "",
+    description: "",
     image: null,
     preview: "",
   });
 
-  // Handle input changes
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // Handle image upload
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -41,22 +36,20 @@ const SellerDashboard = () => {
     }
   };
 
-  // Cancel image selection
   const cancelImage = () => {
     setFormData({ ...formData, image: null, preview: "" });
     document.getElementById("file-input").value = "";
   };
 
-  // Add a new product
   const addProduct = (e) => {
     e.preventDefault();
-    if (formData.name && formData.price) {
+    const { name, price, description } = formData;
+    if (name && price && description) {
       setProducts([...products, { id: products.length + 1, ...formData }]);
-      setFormData({ name: "", price: "", image: null, preview: "" }); // Reset form
+      setFormData({ name: "", price: "", description: "", image: null, preview: "" });
     }
   };
 
-  // Delete a product
   const deleteProduct = (id) => {
     setProducts(products.filter((product) => product.id !== id));
   };
@@ -79,6 +72,14 @@ const SellerDashboard = () => {
           placeholder="Price (LKR)"
           value={formData.price}
           onChange={handleChange}
+          required
+        />
+        <textarea
+          name="description"
+          placeholder="Product Description"
+          value={formData.description}
+          onChange={handleChange}
+          rows={3}
           required
         />
         <input
@@ -116,12 +117,13 @@ const SellerDashboard = () => {
         {products.map((product) => (
           <div key={product.id} className="product-card">
             <img
-              src={product.preview || "/images/placeholder.png"}
+              src={product.preview || "/images/bottle.jpg"}
               alt={product.name}
               className="product-image"
             />
             <h4>{product.name}</h4>
             <p>{product.price} LKR</p>
+            <p className="product-description">{product.description}</p>
             <button
               onClick={() => deleteProduct(product.id)}
               className="delete-btn"
