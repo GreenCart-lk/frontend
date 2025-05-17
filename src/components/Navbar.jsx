@@ -1,16 +1,23 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../styles/navbar.css";
 import { useState, useEffect } from "react";
 import { FaUserCircle } from "react-icons/fa";
 
 const Navbar = ({ cartItems }) => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
+  const [userRole, setUserRole] = useState(localStorage.getItem("userRole")); // 'seller' | 'admin' | null
+  const navigate = useNavigate();
+
+  // Calculate derived state values that depend on userRole
+  const isLoggedIn = !!userRole;
+  const showCart = userRole !== "seller" && userRole !== "admin";
 
   const handleLogout = () => {
-    setIsLoggedIn(false);
+    localStorage.removeItem("userRole");
+    setUserRole(null);
     setProfileOpen(false);
+    navigate("/"); // Explicitly redirect to home
   };
 
   const toggleProfileMenu = () => {
@@ -22,7 +29,6 @@ const Navbar = ({ cartItems }) => {
     setProfileOpen(false);
   };
 
-  // Close profile menu if clicked outside
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (!e.target.closest(".profile-menu")) {
@@ -31,6 +37,24 @@ const Navbar = ({ cartItems }) => {
     };
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  // Update userRole when localStorage changes
+  useEffect(() => {
+    const checkUserRole = () => {
+      const role = localStorage.getItem("userRole");
+      setUserRole(role);
+    };
+    
+    // Check initially
+    checkUserRole();
+    
+    // Set up event listener for storage changes
+    window.addEventListener('storage', checkUserRole);
+    
+    return () => {
+      window.removeEventListener('storage', checkUserRole);
+    };
   }, []);
 
   return (
@@ -44,30 +68,30 @@ const Navbar = ({ cartItems }) => {
           />
         </Link>
 
-        {/* Hamburger Icon */}
+        {/* Hamburger Menu */}
         <div className="menu-icon" onClick={() => setMenuOpen(!menuOpen)}>
           ☰
         </div>
 
-        {/* Navigation Links */}
         <ul className={`nav-links ${menuOpen ? "open" : ""}`}>
+          {/* Home and Products links are always visible */}
           <li>
-            <Link to="/" onClick={closeMenus}>
-              Home
-            </Link>
+            <Link to="/" onClick={closeMenus}>Home</Link>
           </li>
           <li>
-            <Link to="/products" onClick={closeMenus}>
-              Products
-            </Link>
-          </li>
-          <li>
-            <Link to="/cart" onClick={closeMenus}>
-              Cart ({cartItems?.length || 0})
-            </Link>
+            <Link to="/products" onClick={closeMenus}>Products</Link>
           </li>
 
-          {/* Profile Dropdown */}
+          {/* Show Cart only if user is not seller or admin */}
+          {showCart && (
+            <li>
+              <Link to="/cart" onClick={closeMenus}>
+                Cart ({cartItems?.length || 0})
+              </Link>
+            </li>
+          )}
+
+          {/* Profile Menu */}
           <li className="profile-menu">
             <div className="profile-icon" onClick={toggleProfileMenu}>
               <FaUserCircle size={24} />
@@ -76,18 +100,28 @@ const Navbar = ({ cartItems }) => {
               {isLoggedIn ? (
                 <>
                   <li>
-                    <span className="user-name">Welcome, User!</span>
+                    <span className="user-name">Welcome, {userRole}!</span>
                   </li>
-                  <li>
-                    <Link to="/seller" onClick={closeMenus}>
-                      Seller Dashboard
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/admin" onClick={closeMenus}>
-                      Admin Panel
-                    </Link>
-                  </li>
+
+                  {/* Show Seller Dashboard only to sellers */}
+                  {userRole === "seller" && (
+                    <li>
+                      <Link to="/seller" onClick={closeMenus}>
+                        Seller Dashboard
+                      </Link>
+                    </li>
+                  )}
+
+                  {/* Show Admin Panel only to admins */}
+                  {userRole === "admin" && (
+                    <li>
+                      <Link to="/admin" onClick={closeMenus}>
+                        Admin Panel
+                      </Link>
+                    </li>
+                  )}
+
+                  {/* Logout button for all logged-in users */}
                   <li>
                     <button onClick={handleLogout} className="logout-btn">
                       Logout
@@ -96,25 +130,12 @@ const Navbar = ({ cartItems }) => {
                 </>
               ) : (
                 <>
+                  {/* Show Login/Signup only for non-logged in users */}
                   <li>
-                    <Link to="/login" onClick={closeMenus}>
-                      Login
-                    </Link>
+                    <Link to="/login" onClick={closeMenus}>Login</Link>
                   </li>
                   <li>
-                    <Link to="/signup" onClick={closeMenus}>
-                      Sign Up
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/seller" onClick={closeMenus}>
-                      Seller Dashboard
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/admin" onClick={closeMenus}>
-                      Admin Panel
-                    </Link>
+                    <Link to="/signup" onClick={closeMenus}>Sign Up</Link>
                   </li>
                 </>
               )}
