@@ -6,7 +6,6 @@ const Products = () => {
   const [products, setProducts] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
 
-  // Simulated product data (replace with API call later)
   useEffect(() => {
     setProducts([
       {
@@ -16,16 +15,70 @@ const Products = () => {
         image: "/images/bottle.jpg",
       },
       {
+        id: 3,
+        name: "Bamboo Toothbrush",
+        price: "200 LKR",
+        image: "/images/toothbrush.jpg",
+      },
+      {
+        id: 11,
+        name: "Neem Wood Comb",
+        price: "450 LKR",
+        image: "/images/neem-comb.jpg",
+      },
+      {
+        id: 8,
+        name: "Coconut Shell Bowl",
+        price: "1100 LKR",
+        image: "/images/coconut-bowl.jpg",
+      },
+      {
+        id: 4,
+        name: "Eco-Friendly Notebook",
+        price: "450 LKR",
+        image: "/images/notebook.jpg",
+      },
+      {
         id: 2,
         name: "Organic Cotton Tote Bag",
         price: "1200 LKR",
         image: "/images/tote-bag.jpg",
       },
       {
-        id: 3,
-        name: "Bamboo Toothbrush",
-        price: "800 LKR",
-        image: "/images/toothbrush.jpg",
+        id: 5,
+        name: "Solar-Powered Garden Light",
+        price: "3200 LKR",
+        image: "/images/solar-light.jpg",
+      },
+      {
+        id: 6,
+        name: "Natural Loofah Sponge",
+        price: "500 LKR",
+        image: "/images/loofah.jpg",
+      },
+      {
+        id: 7,
+        name: "Compostable Garbage Bags",
+        price: "700 LKR",
+        image: "/images/compostable-bags.jpg",
+      },
+      {
+        id: 9,
+        name: "Handmade Natural Soap Bar",
+        price: "250 LKR",
+        image: "/images/natural-soap.jpg",
+      },
+      {
+        id: 10,
+        name: "Biodegradable Plant Pots",
+        price: "900 LKR",
+        image: "/images/plant-pots.jpg",
+      },
+      {
+        id: 12,
+        name: "Upcycled Fabric Storage Basket",
+        price: "1600 LKR",
+        image: "/images/fabric-basket.jpg",
       },
     ]);
   }, []);
