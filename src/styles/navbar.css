@@ -6,6 +6,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
 /* Inner Container */
@@ -28,23 +31,25 @@
 .nav-links {
   list-style: none;
   display: flex;
+  align-items: flex-end;
   gap: 5px;
 }
 
 .nav-links li {
-  display: inline;
+  position: relative;
+  margin: auto;
 }
 
+/* Links and Buttons */
 .nav-links a,
 .logout-btn {
   text-decoration: none;
   color: white;
-  font-size: 1.2em;
+  font-size: 1.1em;
   background: none;
   border: none;
   cursor: pointer;
-  color: white;
-  margin: 0 15px;
+  margin: 0 10px;
   font-weight: lighter;
 }
 
@@ -53,12 +58,61 @@
   text-decoration: underline;
 }
 
-/* Hamburger Menu */
+/* Hamburger Menu Icon */
 .menu-icon {
   display: none;
   font-size: 2em;
   cursor: pointer;
   color: white;
+}
+
+/* Profile Icon */
+.profile-icon {
+  cursor: pointer;
+  color: white;
+  font-size: 1.5em;
+  margin: 0 10px;
+  height: 24px;
+}
+
+/* Profile Dropdown */
+.dropdown-menu {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  top: 40px;
+  right: 0;
+  background-color: #388e3c;
+  border-radius: 5px;
+  min-width: 200px;
+  padding: 10px 0;
+  z-index: 999;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown-menu li {
+  padding: 8px 15px;
+}
+
+.dropdown-menu li a,
+.dropdown-menu li button {
+  color: white;
+  text-decoration: none;
+  font-size: 1em;
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+}
+
+.dropdown-menu li a:hover,
+.dropdown-menu li button:hover {
+  background-color: #2e7d32;
+}
+
+.dropdown-menu.show {
+  display: flex;
 }
 
 /* Mobile Styles */
@@ -74,14 +128,16 @@
   .nav-links {
     display: none;
     flex-direction: column;
+    align-items: flex-start;
     background: #2e7d32;
     position: absolute;
     top: 60px;
     right: 10px;
-    width: 200px;
+    width: 220px;
     border-radius: 5px;
-    padding: 10px;
-    text-align: center;
+    padding: 15px;
+    text-align: left;
+    z-index: 998;
   }
 
   .nav-links.open {
@@ -90,5 +146,30 @@
 
   .nav-links li {
     margin: 10px 0;
+    width: 100%;
+  }
+
+  .dropdown-menu {
+    position: relative;
+    top: 0;
+    right: 0;
+    box-shadow: none;
+    background-color: transparent;
+    padding-left: 10px;
+  }
+
+  .dropdown-menu li {
+    padding: 5px 0;
+  }
+
+  .dropdown-menu li a,
+  .dropdown-menu li button {
+    color: white;
+    background-color: transparent;
+  }
+
+  .dropdown-menu li a:hover,
+  .dropdown-menu li button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
   }
 }
