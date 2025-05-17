@@ -4,10 +4,10 @@ const Footer = () => {
   return (
     <footer className="footer">
       <p>
-        &copy; {new Date().getFullYear()} GreenCart LK. All rights reserved.
+        <a href="/about">About Us</a> | <a href="/contact">Contact</a>
       </p>
       <p>
-        <a href="/about">About Us</a> | <a href="/contact">Contact</a>
+        &copy; {new Date().getFullYear()} GreenCart LK. All rights reserved.
       </p>
     </footer>
   );

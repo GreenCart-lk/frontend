@@ -4,7 +4,7 @@ import "../styles/adminPanel.css";
 const AdminPanel = () => {
   const [users, setUsers] = useState([
     { id: 1, name: "John Doe", email: "john@example.com", role: "Seller" },
-    { id: 2, name: "Jane Smith", email: "jane@example.com", role: "Customer" },
+    { id: 2, name: "Jane Smith", email: "jane@example.com", role: "Admin" },
   ]);
 
   const [products, setProducts] = useState([
