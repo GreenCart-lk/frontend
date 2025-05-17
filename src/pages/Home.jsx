@@ -18,8 +18,44 @@ const Home = () => {
     {
       id: 3,
       name: "Bamboo Toothbrush",
-      price: "800 LKR",
+      price: "200 LKR",
       image: "/images/toothbrush.jpg",
+    },
+    {
+      id: 4,
+      name: "Eco-Friendly Notebook",
+      price: "450 LKR",
+      image: "/images/notebook.jpg",
+    },
+    {
+      id: 5,
+      name: "Solar-Powered Garden Light",
+      price: "3200 LKR",
+      image: "/images/solar-light.jpg",
+    },
+    {
+      id: 6,
+      name: "Natural Loofah Sponge",
+      price: "500 LKR",
+      image: "/images/loofah.jpg",
+    },
+    {
+      id: 7,
+      name: "Compostable Garbage Bags",
+      price: "700 LKR",
+      image: "/images/compostable-bags.jpg",
+    },
+    {
+      id: 8,
+      name: "Coconut Shell Bowl",
+      price: "1100 LKR",
+      image: "/images/coconut-bowl.jpg",
+    },
+    {
+      id: 9,
+      name: "Handmade Natural Soap Bar",
+      price: "250 LKR",
+      image: "/images/natural-soap.jpg",
     },
   ];
 
@@ -55,17 +91,17 @@ const Home = () => {
 
       <section className="featured-products">
         <h2>Featured Products</h2>
-        <div className="product-list">
+        <div className="product-list1">
           {featuredProducts.map((product) => (
-            <div key={product.id} className="product-card">
+            <div key={product.id} className="product-card1">
               <img
                 src={product.image}
                 alt={product.name}
-                className="product-image"
+                className="product-image1"
               />
               <h3>{product.name}</h3>
               <p>{product.price}</p>
-              <Link to={`/products/${product.id}`} className="view-details">
+              <Link to={`/products/${product.id}`} className="view-details1">
                 View Details
               </Link>
             </div>

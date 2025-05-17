@@ -1,110 +1,192 @@
 .home-container {
   text-align: center;
-  padding: 20px;
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: fadeIn 1s ease-in-out;
 }
 
 .hero-section {
-  background: #2e7d32;
+  background: linear-gradient(135deg, #2e7d32, #34b13a);
   color: white;
-  padding: 40px 20px;
-  border-radius: 10px;
+  padding: 50px 20px;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 800px;
+  margin-bottom: 40px;
+  animation: slideUp 1s ease-in-out;
 }
 
 .hero-section h1 {
-  font-size: 2.5em;
+  font-size: 3em;
+  margin-bottom: 10px;
 }
 
 .hero-section p {
-  font-size: 1.2em;
-  margin-top: 10px;
+  font-size: 1.3em;
+  margin-bottom: 20px;
 }
 
 .shop-now-btn {
-  display: inline-block;
-  margin-top: 15px;
-  padding: 10px 20px;
+  padding: 12px 28px;
   background: white;
   color: #2e7d32;
-  font-weight: bold;
+  font-weight: 600;
   text-decoration: none;
-  border-radius: 5px;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .shop-now-btn:hover {
-  background: #f1f1f1;
+  background: #f4f4f4;
+  transform: scale(1.05);
 }
 
 .about-section {
-  margin-top: 30px;
-  padding: 20px;
   background: #f4f4f4;
-  border-radius: 10px;
+  padding: 20px;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 800px;
+  margin-bottom: 40px;
 }
 
 .about-section h2 {
   color: #2e7d32;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
+  font-size: 1.8em;
 }
 
 .about-section ul {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
 .about-section li {
-  font-size: 1.1em;
-  margin-bottom: 10px;
+  font-size: 1.2em;
+  margin-bottom: 15px;
+  text-align: center;
 }
 
 .featured-products {
-  margin-top: 30px;
+  width: 100%;
+  max-width: 1000px;
+  margin-bottom: 40px;
 }
 
-.product-list {
+.featured-products h2 {
+  margin-bottom: 25px;
+  color: #2e7d32;
+  font-size: 1.8em;
+}
+
+.product-list1 {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 20px;
+  gap: 25px;
 }
 
-.product-card {
+.product-card1 {
   background: white;
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  width: 250px;
+  padding: 20px;
+  border-radius: 10px;
+  width: 260px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.product-image {
+.product-card1:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+}
+
+.product-image1 {
   width: 100%;
   height: 180px;
-  object-fit: cover;
-  border-radius: 5px;
+  object-fit: contain;
+  border-radius: 8px;
+  margin-bottom: 15px;
 }
 
-.view-details {
+.view-details1 {
   display: inline-block;
   margin-top: 10px;
-  padding: 8px 12px;
+  padding: 10px 20px;
   background: #2e7d32;
   color: white;
   text-decoration: none;
-  border-radius: 5px;
+  border-radius: 20px;
+  transition: background 0.3s ease;
 }
 
-.view-details:hover {
+.view-details1:hover {
   background: #1b5e20;
 }
 
-/* Responsive Grid for Products */
-.product-list {
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-/* Responsive Text */
+@keyframes slideUp {
+  from {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 1s ease forwards;
+}
+
+.slide-up {
+  animation: slideUp 1s ease forwards;
+}
+
+.bounce-in {
+  animation: bounceIn 0.6s ease forwards;
+}
+
+/* Responsive Text & Layout */
 @media (max-width: 768px) {
   .hero-section h1 {
-    font-size: 1.8em;
+    font-size: 2em;
+  }
+
+  .about-section li {
+    font-size: 1em;
+  }
+
+  .product-card {
+    width: 90%;
   }
 }
